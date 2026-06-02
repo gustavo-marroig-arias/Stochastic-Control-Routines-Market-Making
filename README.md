@@ -13,10 +13,13 @@ The project is deliberately synthetic. It is intended to demonstrate the mechani
 notebooks/stochastic_control_trading.ipynb   Reproducible notebook and plots
 src/stoch_control_trading/                   Model implementations
 tests/                                       Unit tests for formulas and simulations
-docs/model_specification.md                  Mathematical model specification
+docs/model_specification.pdf                 Rendered mathematical model specification
+docs/model_specification.tex                 LaTeX source for the model specification
+docs/model_specification.md                  GitHub-friendly pointer to the PDF
 docs/results_discussion.md                   Formal interpretation of model outputs
 outputs/figures/                             Generated figures
 pyproject.toml                               Editable package metadata
+scripts/render_model_spec_pdf.py             PDF renderer for the mathematical specification
 ```
 
 ## Setup
@@ -24,27 +27,28 @@ pyproject.toml                               Editable package metadata
 ```bash
 conda env create -f environment.yml
 conda activate sc-control-mm
-python -m pip install -e .
+python -m pip install -e . --no-build-isolation
 ```
 
 ## One-Command Reproducibility
 
-After creating and activating the conda environment, this command installs the package, runs the tests, executes the notebook, and checks that the figures were regenerated:
+After creating and activating the conda environment, this command installs the package, regenerates the mathematical specification PDF, runs the tests, executes the notebook, and checks that the figures were regenerated:
 
 ```bash
-python -m pip install -e . &&
+python -m pip install -e . --no-build-isolation &&
+MPLCONFIGDIR=.cache/matplotlib python scripts/render_model_spec_pdf.py &&
 MPLCONFIGDIR=.cache/matplotlib python -m unittest discover -s tests &&
 MPLCONFIGDIR=.cache/matplotlib jupyter nbconvert --to notebook --execute notebooks/stochastic_control_trading.ipynb --output executed_stochastic_control_trading.ipynb &&
 python -c "from pathlib import Path; figs=sorted(Path('outputs/figures').glob('*.png')); assert len(figs)==3, figs; print(f'{len(figs)} figures generated')"
 ```
 
-Expected output: the test run ends with `OK` after `Ran 13 tests`, and the final line prints `3 figures generated`.
+Expected output: the PDF step prints `Wrote .../docs/model_specification.pdf`, the test run ends with `OK` after `Ran 13 tests`, and the final line prints `3 figures generated`.
 
-The notebook saves figures to `outputs/figures/`. The full mathematical specification is in [docs/model_specification.md](docs/model_specification.md).
+The notebook saves figures to `outputs/figures/`. The full mathematical specification is in [docs/model_specification.pdf](docs/model_specification.pdf).
 
 ## Models Implemented
 
-The complete mathematical statement is in [docs/model_specification.md](docs/model_specification.md). This README summarizes the implemented state dynamics, controls, and numerical reduction.
+The complete mathematical statement is in [docs/model_specification.pdf](docs/model_specification.pdf). This README summarizes the implemented state dynamics, controls, and numerical reduction.
 
 ### Optimal Liquidation
 
@@ -126,7 +130,7 @@ $$
 W(t)=\exp((T-t)A)W(T).
 $$
 
-See [docs/model_specification.md](docs/model_specification.md) for the full Bellman equation, terminal condition, ODE matrix, admissibility conditions, boundary convention, and first-event simulation discretization.
+See [docs/model_specification.pdf](docs/model_specification.pdf) for the full Bellman equation, terminal condition, ODE matrix, admissibility conditions, boundary convention, and first-event simulation discretization.
 
 ## Results
 

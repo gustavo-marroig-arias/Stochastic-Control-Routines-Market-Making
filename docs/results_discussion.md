@@ -1,6 +1,6 @@
 # Results Discussion
 
-This note interprets the numerical outputs produced by the notebook. The complete mathematical statement is in [model_specification.md](model_specification.md); this file focuses on what was computed, what the figures show, and what should not be inferred.
+This note interprets the numerical outputs produced by the notebook. The complete mathematical statement is in [model_specification.pdf](model_specification.pdf); this file focuses on what was computed, what the figures show, and what should not be inferred.
 
 The results are properties of two stylized stochastic-control models. They are not evidence of live trading profitability, exchange calibration, or production market-making readiness.
 
