@@ -1,5 +1,11 @@
 # Stochastic Control Routines for Optimal Execution and Market Making
 
+[![Tests](https://github.com/gustavo-marroig-arias/Stochastic-Control-Routines-Market-Making/actions/workflows/tests.yml/badge.svg)](https://github.com/gustavo-marroig-arias/Stochastic-Control-Routines-Market-Making/actions/workflows/tests.yml)
+
+Compact Python implementations of stochastic-control routines for optimal liquidation and finite-grid inventory-based market making, with simulations, diagnostics, and tests.
+
+**Code structure.** Core model code lives in `src/stoch_control_trading/`; the notebook is only the reproducible presentation layer.
+
 This repository implements two compact stochastic-control examples used in execution and market-making theory:
 
 - closed-form optimal liquidation with temporary price impact and terminal inventory penalty;
