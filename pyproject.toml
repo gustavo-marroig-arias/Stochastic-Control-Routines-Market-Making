@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stoch-control-trading"
+version = "0.1.0"
+description = "Compact stochastic-control routines for optimal liquidation and market-making examples."
+requires-python = ">=3.12"
+dependencies = [
+    "numpy",
+    "scipy",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

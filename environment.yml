@@ -1,0 +1,13 @@
+name: sc-control-mm
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - jupyter
+  - ipykernel
+  - nbconvert
+  - pip
