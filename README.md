@@ -50,16 +50,15 @@ The complete mathematical statement is in [docs/model_specification.md](docs/mod
 
 The liquidation model describes an agent selling an initial inventory over a fixed horizon. The control is the selling rate `a_t`. Trading faster reduces terminal inventory but worsens execution price through temporary impact.
 
-State variables are inventory `Q_t`, midprice `S_t`, and cash `X_t`. The no-permanent-impact dynamics are
+State variables are inventory `Q_t`, midprice `S_t`, and cash `X_t`. The no-permanent-impact dynamics are:
 
-$$
-\begin{aligned}
-dQ_t &= -a_t\,dt, \\
-dS_t &= \sigma\,dW_t, \\
-\widehat{S}_t &= S_t-\kappa a_t, \\
-dX_t &= a_t\widehat{S}_t\,dt.
-\end{aligned}
-$$
+$$dQ_t = -a_t\,dt$$
+
+$$dS_t = \sigma\,dW_t$$
+
+$$\widehat{S}_t = S_t-\kappa a_t$$
+
+$$dX_t = a_t\widehat{S}_t\,dt$$
 
 The objective is terminal cash plus terminal mark-to-market inventory value, penalized by unsold inventory:
 
@@ -69,14 +68,11 @@ X_T + Q_T S_T - \theta Q_T^2
 \right].
 $$
 
-For this no-permanent-impact case, the Riccati coefficient and optimal selling rate are
+For this no-permanent-impact case, the Riccati coefficient and optimal selling rate are:
 
-$$
-\begin{aligned}
-\gamma(t) &= -\left(\frac{1}{\theta}+\frac{T-t}{\kappa}\right)^{-1}, \\
-a^*(t,q) &= -\frac{\gamma(t)}{\kappa}q.
-\end{aligned}
-$$
+$$\gamma(t) = -\left(\frac{1}{\theta}+\frac{T-t}{\kappa}\right)^{-1}$$
+
+$$a^*(t,q) = -\frac{\gamma(t)}{\kappa}q$$
 
 The deterministic inventory path under this policy is
 
@@ -90,24 +86,17 @@ The market-making model describes a dealer posting one bid and one ask around an
 
 State variables are midprice `S_t`, cash `X_t`, and inventory `Q_t`. Fill intensities decay with quote distance:
 
-$$
-\begin{aligned}
-\lambda_b(\delta_b) &= \lambda e^{-\kappa\delta_b}, \\
-\lambda_a(\delta_a) &= \lambda e^{-\kappa\delta_a}.
-\end{aligned}
-$$
+$$\lambda_b(\delta_b) = \lambda e^{-\kappa\delta_b}$$
 
-With bid-fill and ask-fill counting processes `N_t^b` and `N_t^a`, the state dynamics are
+$$\lambda_a(\delta_a) = \lambda e^{-\kappa\delta_a}$$
 
-$$
-\begin{aligned}
-dS_t &= \sigma\,dW_t, \\
-dQ_t &= \Delta\,dN_t^b-\Delta\,dN_t^a, \\
-dX_t
-&= -\Delta(S_t-\delta_b)\,dN_t^b
-   + \Delta(S_t+\delta_a)\,dN_t^a.
-\end{aligned}
-$$
+With bid-fill and ask-fill counting processes `N_t^b` and `N_t^a`, the state dynamics are:
+
+$$dS_t = \sigma\,dW_t$$
+
+$$dQ_t = \Delta\,dN_t^b-\Delta\,dN_t^a$$
+
+$$dX_t = -\Delta(S_t-\delta_b)\,dN_t^b + \Delta(S_t+\delta_a)\,dN_t^a$$
 
 The objective is terminal marked-to-market wealth with terminal and running inventory penalties:
 
@@ -127,16 +116,9 @@ $$
 
 The quote distances are recovered from neighboring inventory values:
 
-$$
-\begin{aligned}
-\delta_b^*(t,q)
-&= \frac{1}{\kappa}
-   - \frac{\theta(t,q+\Delta)-\theta(t,q)}{\Delta}, \\
-\delta_a^*(t,q)
-&= \frac{1}{\kappa}
-   - \frac{\theta(t,q-\Delta)-\theta(t,q)}{\Delta}.
-\end{aligned}
-$$
+$$\delta_b^*(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q+\Delta)-\theta(t,q)}{\Delta}$$
+
+$$\delta_a^*(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q-\Delta)-\theta(t,q)}{\Delta}$$
 
 Boundary quotes that would move inventory outside the finite grid are suppressed. The nonlinear Bellman equation becomes a linear ODE after
 

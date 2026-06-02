@@ -63,45 +63,29 @@ The selling rate is constant along each optimal path in this specific formulatio
 
 The market-making routine solves the symmetric finite-grid Bellman reduction. The model state is midprice, cash, and inventory. Bid fills increase inventory and reduce cash; ask fills reduce inventory and increase cash:
 
-$$
-\begin{aligned}
-dQ_t &= \Delta\,dN_t^b-\Delta\,dN_t^a, \\
-dX_t
-&= -\Delta(S_t-\delta_b)\,dN_t^b
-   + \Delta(S_t+\delta_a)\,dN_t^a.
-\end{aligned}
-$$
+$$dQ_t = \Delta\,dN_t^b-\Delta\,dN_t^a$$
 
-Fill intensities are
+$$dX_t = -\Delta(S_t-\delta_b)\,dN_t^b + \Delta(S_t+\delta_a)\,dN_t^a$$
 
-$$
-\lambda e^{-\kappa\delta_b},
-\qquad
-\lambda e^{-\kappa\delta_a}.
-$$
+Fill intensities are:
 
-The value function is reduced with
+$$\lambda e^{-\kappa\delta_b}$$
 
-$$
-v(t,S,x,q)=x+Sq+\theta(t,q),
-\qquad
-\theta(t,q)=\frac{\Delta}{\kappa}\log W(t,q).
-$$
+$$\lambda e^{-\kappa\delta_a}$$
+
+The value function is reduced with:
+
+$$v(t,S,x,q)=x+Sq+\theta(t,q)$$
+
+$$\theta(t,q)=\frac{\Delta}{\kappa}\log W(t,q)$$
 
 This is why the code can solve a finite-dimensional ODE for `W` rather than a full PDE. Since the ansatz is linear in `S`, midprice volatility affects simulated marked-to-market outcomes but drops out of the quote policy.
 
 The optimal quote distances are computed from neighboring inventory values:
 
-$$
-\begin{aligned}
-\delta_b^*(t,q)
-&= \frac{1}{\kappa}
-   - \frac{\theta(t,q+\Delta)-\theta(t,q)}{\Delta}, \\
-\delta_a^*(t,q)
-&= \frac{1}{\kappa}
-   - \frac{\theta(t,q-\Delta)-\theta(t,q)}{\Delta}.
-\end{aligned}
-$$
+$$\delta_b^*(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q+\Delta)-\theta(t,q)}{\Delta}$$
+
+$$\delta_a^*(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q-\Delta)-\theta(t,q)}{\Delta}$$
 
 These formulas are used in the interior-positive regime only. At the upper inventory boundary, the bid is suppressed; at the lower boundary, the ask is suppressed. The implementation raises an error if finite quote distances become nonpositive for the chosen parameters.
 
