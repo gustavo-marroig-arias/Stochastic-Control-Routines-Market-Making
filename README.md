@@ -63,9 +63,7 @@ $$dX_t = a_t\widehat{S}_t\,dt$$
 The objective is terminal cash plus terminal mark-to-market inventory value, penalized by unsold inventory:
 
 $$
-\mathbb{E}\left[
-X_T + Q_T S_T - \theta Q_T^2
-\right].
+\mathbb{E}\left[X_T + Q_T S_T - \theta Q_T^2\right]
 $$
 
 For this no-permanent-impact case, the Riccati coefficient and optimal selling rate are:
@@ -101,11 +99,7 @@ $$dX_t = -\Delta(S_t-\delta_b)\,dN_t^b + \Delta(S_t+\delta_a)\,dN_t^a$$
 The objective is terminal marked-to-market wealth with terminal and running inventory penalties:
 
 $$
-\mathbb{E}\left[
-X_T + Q_T S_T
-- \alpha Q_T^2
-- \int_0^T \phi Q_t^2\,dt
-\right].
+\mathbb{E}\left[X_T + Q_T S_T - \alpha Q_T^2 - \int_0^T \phi Q_t^2\,dt\right]
 $$
 
 The implementation uses the symmetric finite-grid, interior-positive quote regime. The value-function ansatz is
