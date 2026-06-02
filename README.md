@@ -191,3 +191,7 @@ References:
 
 - Avellaneda, M. and Stoikov, S. (2008). High-frequency trading in a limit order book. Quantitative Finance.
 - Guéant, O., Lehalle, C.-A. and Fernandez-Tapia, J. (2013). Dealing with the inventory risk: a solution to the market making problem. Mathematics and Financial Economics.
+
+## License
+
+This project is released under the MIT License. See [LICENSE](LICENSE).
