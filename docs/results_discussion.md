@@ -9,13 +9,13 @@ The results are properties of two stylized stochastic-control models. They are n
 The liquidation routine implements the no-permanent-impact closed-form policy. Inventory follows
 
 $$
-dQ_t=-a_t\,dt,
+\mathrm{d}Q_t=-a_t \mathrm{d}t,
 $$
 
 cash follows
 
 $$
-dX_t=a_t(S_t-\kappa a_t)\,dt,
+\mathrm{d}X_t=a_t(S_t-\kappa a_t)\mathrm{d}t,
 $$
 
 and the terminal objective is
@@ -63,9 +63,9 @@ The selling rate is constant along each optimal path in this specific formulatio
 
 The market-making routine solves the symmetric finite-grid Bellman reduction. The model state is midprice, cash, and inventory. Bid fills increase inventory and reduce cash; ask fills reduce inventory and increase cash:
 
-$$dQ_t = \Delta\,dN_t^b-\Delta\,dN_t^a$$
+$$\mathrm{d}Q_t = \Delta \mathrm{d}N_t^b-\Delta \mathrm{d}N_t^a$$
 
-$$dX_t = -\Delta(S_t-\delta_b)\,dN_t^b + \Delta(S_t+\delta_a)\,dN_t^a$$
+$$\mathrm{d}X_t = -\Delta(S_t-\delta_b)\mathrm{d}N_t^b + \Delta(S_t+\delta_a)\mathrm{d}N_t^a$$
 
 Fill intensities are:
 

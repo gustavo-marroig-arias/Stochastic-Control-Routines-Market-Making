@@ -56,13 +56,13 @@ The liquidation model describes an agent selling an initial inventory over a fix
 
 State variables are inventory `Q_t`, midprice `S_t`, and cash `X_t`. The no-permanent-impact dynamics are:
 
-$$dQ_t = -a_t\,dt$$
+$$\mathrm{d}Q_t = -a_t \mathrm{d}t$$
 
-$$dS_t = \sigma\,dW_t$$
+$$\mathrm{d}S_t = \sigma \mathrm{d}W_t$$
 
 $$\widehat{S}_t = S_t-\kappa a_t$$
 
-$$dX_t = a_t\widehat{S}_t\,dt$$
+$$\mathrm{d}X_t = a_t\widehat{S}_t \mathrm{d}t$$
 
 The objective is terminal cash plus terminal mark-to-market inventory value, penalized by unsold inventory:
 
@@ -94,16 +94,16 @@ $$\lambda_a(\delta_a) = \lambda e^{-\kappa\delta_a}$$
 
 With bid-fill and ask-fill counting processes `N_t^b` and `N_t^a`, the state dynamics are:
 
-$$dS_t = \sigma\,dW_t$$
+$$\mathrm{d}S_t = \sigma \mathrm{d}W_t$$
 
-$$dQ_t = \Delta\,dN_t^b-\Delta\,dN_t^a$$
+$$\mathrm{d}Q_t = \Delta \mathrm{d}N_t^b-\Delta \mathrm{d}N_t^a$$
 
-$$dX_t = -\Delta(S_t-\delta_b)\,dN_t^b + \Delta(S_t+\delta_a)\,dN_t^a$$
+$$\mathrm{d}X_t = -\Delta(S_t-\delta_b)\mathrm{d}N_t^b + \Delta(S_t+\delta_a)\mathrm{d}N_t^a$$
 
 The objective is terminal marked-to-market wealth with terminal and running inventory penalties:
 
 $$
-\mathbb{E}\left[X_T + Q_T S_T - \alpha Q_T^2 - \int_0^T \phi Q_t^2\,dt\right]
+\mathbb{E}\left[X_T + Q_T S_T - \alpha Q_T^2 - \int_0^T \phi Q_t^2 \mathrm{d}t\right]
 $$
 
 The implementation uses the symmetric finite-grid, interior-positive quote regime. The value-function ansatz is
