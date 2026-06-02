@@ -110,9 +110,9 @@ $$
 
 The quote distances are recovered from neighboring inventory values:
 
-$$\delta_b^*(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q+\Delta)-\theta(t,q)}{\Delta}$$
+$$\delta_{b}^{*}(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q+\Delta)-\theta(t,q)}{\Delta}$$
 
-$$\delta_a^*(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q-\Delta)-\theta(t,q)}{\Delta}$$
+$$\delta_{a}^{*}(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q-\Delta)-\theta(t,q)}{\Delta}$$
 
 Boundary quotes that would move inventory outside the finite grid are suppressed. The nonlinear Bellman equation becomes a linear ODE after
 

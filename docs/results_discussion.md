@@ -83,9 +83,9 @@ This is why the code can solve a finite-dimensional ODE for `W` rather than a fu
 
 The optimal quote distances are computed from neighboring inventory values:
 
-$$\delta_b^*(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q+\Delta)-\theta(t,q)}{\Delta}$$
+$$\delta_{b}^{*}(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q+\Delta)-\theta(t,q)}{\Delta}$$
 
-$$\delta_a^*(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q-\Delta)-\theta(t,q)}{\Delta}$$
+$$\delta_{a}^{*}(t,q) = \frac{1}{\kappa} - \frac{\theta(t,q-\Delta)-\theta(t,q)}{\Delta}$$
 
 These formulas are used in the interior-positive regime only. At the upper inventory boundary, the bid is suppressed; at the lower boundary, the ask is suppressed. The implementation raises an error if finite quote distances become nonpositive for the chosen parameters.
 

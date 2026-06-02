@@ -194,8 +194,8 @@ In the interior-positive regime, where the unconstrained maximizers have positiv
 
 $$
 \begin{aligned}
-\delta_b^*(t,q) &= \frac{1}{\kappa}-g_b(t,q), \\
-\delta_a^*(t,q) &= \frac{1}{\kappa}-g_a(t,q).
+\delta_{b}^{*}(t,q) &= \frac{1}{\kappa}-g_b(t,q), \\
+\delta_{a}^{*}(t,q) &= \frac{1}{\kappa}-g_a(t,q).
 \end{aligned}
 $$
 
@@ -203,9 +203,9 @@ Equivalently,
 
 $$
 \begin{aligned}
-\delta_b^*(t,q)
+\delta_{b}^{*}(t,q)
 &= \frac{1}{\kappa} - \frac{\theta(t,q+\Delta)-\theta(t,q)}{\Delta}, \\
-\delta_a^*(t,q)
+\delta_{a}^{*}(t,q)
 &= \frac{1}{\kappa} - \frac{\theta(t,q-\Delta)-\theta(t,q)}{\Delta}.
 \end{aligned}
 $$
@@ -213,9 +213,9 @@ $$
 At the boundaries, the implementation suppresses quotes that would move inventory outside the grid:
 
 $$
-\delta_b^*(t,q_{\max})=+\infty,
+\delta_{b}^{*}(t,q_{\max})=+\infty,
 \qquad
-\delta_a^*(t,q_{\min})=+\infty.
+\delta_{a}^{*}(t,q_{\min})=+\infty.
 $$
 
 The code checks that all finite quote distances are strictly positive for the chosen parameters. If the unconstrained first-order condition produced a nonpositive distance, the constrained-control problem would need to be solved with the nonnegativity constraint active; that case is outside this toy implementation.
